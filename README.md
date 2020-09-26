@@ -75,9 +75,8 @@ YouTube : https://youtu.be/wgJmhHc3aTc
 
 3. Setup
 	
-	* Mail configuration : 
 ```
-      * Mail configuration : 
+      Mail configuration 
 
       MAIL_SERVER='smtp.gmail.com' # mail server default gmail 
       MAIL_USERNAME='' # mail server username
@@ -87,7 +86,7 @@ YouTube : https://youtu.be/wgJmhHc3aTc
       MAIL_USE_TLS=False    
 ```
 
-	* Stripe configuration : 
+	  Stripe configuration : 
 ```
    	  publishable_key='' # publishable_key
 	  stripe.api_key=''  # stripe api key
