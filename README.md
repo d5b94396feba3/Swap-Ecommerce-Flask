@@ -25,39 +25,39 @@ YouTube : https://youtu.be/wgJmhHc3aTc
     <tr>
         <td align="center">
          <p>Home Page</p>
-        <img src="assets/demos/Home_page.png" alt="Screenshot Home" width="30px" />   
+        <img src="src/static/assets/demos/Home_page.png" alt="Screenshot Home" width="300px" />   
         </td>
         <td align="center">
         <p>Search Results</p>
-         <img src="assets/demos/search.png" alt="Screenshot Search" width="30px" />
+         <img src="src/static/assets/demos/search.png" alt="Screenshot Search" width="300px" />
         </td>
         <td align="center">
            <p>Order Page</p>
-           <img src="assets/demos/customer_carts.png" alt="Screenshot Order" width="30px" />
+           <img src="src/static/assets/demos/customer_carts.png" alt="Screenshot Order" width="300px" />
         </td>
     </tr>
     <tr>
         <td align="center">
         	         <p>Admin dashboard</p>
-                <img src="assets/demos/admin_dashboard.png" alt="Screenshot Admin Dashboard" width="300px" />
+                <img src="src/static/assets/demos/admin_dashboard.png" alt="Screenshot Admin Dashboard" width="300px" />
         </td>
         <td align="center">
         	         <p>Dashboard Products</p>
-                <img src="assets/demos/product_dashboard.png" alt="Screenshot Products" width="300px" />
+                <img src="src/static/assets/demos/product_dashboard.png" alt="Screenshot Products" width="300px" />
         </td>
         <td align="center">
         	         <p>Dashboard Orders</p>
-                <img src="assets/demos/order_dashboard.png" alt="Screenshot Order List" width="300px" />
+                <img src="src/static/assets/demos/order_dashboard.png" alt="Screenshot Order List" width="300px" />
         </td>
     </tr>
     <tr>
         <td align="center">
         	         <p>Confirm Order</p>
-                <img src="assets/demos/confirm_orders.png" alt="Screenshot Confirm Order" width="300px" />
+                <img src="src/static/assets/demos/confirm_orders.png" alt="Screenshot Confirm Order" width="300px" />
         </td>
         <td align="center">
         	         <p>Dashboard Users</p>
-                <img src="assets/demos/admin_users.png" alt="Screenshot Users" width="300px" />
+                <img src="src/static/assets/demos/admin_users.png" alt="Screenshot Users" width="300px" />
         </td>
     </tr>
 </table>
@@ -77,6 +77,8 @@ YouTube : https://youtu.be/wgJmhHc3aTc
 	
 	* Mail configuration : 
 ```
+      * Mail configuration : 
+
       MAIL_SERVER='smtp.gmail.com' # mail server default gmail 
       MAIL_USERNAME='' # mail server username
       MAIL_PASSWORD='' # mail server password
