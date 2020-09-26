@@ -29,7 +29,7 @@ YouTube : https://youtu.be/wgJmhHc3aTc
         </td>
         <td align="center">
         <p>Search Results</p>
-         <img src="src/static/demos/search.png" alt="Screenshot Search" width="300px" height="300"/>
+         <img src="src/static/demos/search.png" alt="Screenshot Search" width="372px" height="300"/>
         </td>
         <td align="center">
            <p>Order Page</p>
