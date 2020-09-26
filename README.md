@@ -29,35 +29,35 @@ YouTube : https://youtu.be/wgJmhHc3aTc
         </td>
         <td align="center">
         <p>Search Results</p>
-         <img src="src/static/demos/search.png" alt="Screenshot Search" width="300px" />
+         <img src="src/static/demos/search.png" alt="Screenshot Search" width="300px" height="300"/>
         </td>
         <td align="center">
            <p>Order Page</p>
-           <img src="src/static/demos/customer_carts.png" alt="Screenshot Order" width="300px" />
+           <img src="src/static/demos/customer_carts.png" alt="Screenshot Order" width="300px" height="200"/>
         </td>
     </tr>
     <tr>
         <td align="center">
         	         <p>Admin dashboard</p>
-                <img src="src/static/demos/admin_dashboard.png" alt="Screenshot Admin Dashboard" width="300px" />
+                <img src="src/static/demos/admin_dashboard.png" alt="Screenshot Admin Dashboard" width="300px" height="200"/>
         </td>
         <td align="center">
         	         <p>Dashboard Products</p>
-                <img src="src/static/demos/product_dashboard.png" alt="Screenshot Products" width="300px" />
+                <img src="src/static/demos/product_dashboard.png" alt="Screenshot Products" width="300px" height="200"/>
         </td>
         <td align="center">
         	         <p>Dashboard Orders</p>
-                <img src="src/static/demos/order_dashboard.png" alt="Screenshot Order List" width="300px" />
+                <img src="src/static/demos/order_dashboard.png" alt="Screenshot Order List" width="300px" height="200"/>
         </td>
     </tr>
     <tr>
         <td align="center">
         	         <p>Confirm Order</p>
-                <img src="src/static/demos/confirm_orders.png" alt="Screenshot Confirm Order" width="300px" />
+                <img src="src/static/demos/confirm_orders.png" alt="Screenshot Confirm Order" width="300px" height="200"/>
         </td>
         <td align="center">
         	         <p>Dashboard Users</p>
-                <img src="src/static/demos/admin_users.png" alt="Screenshot Users" width="300px" />
+                <img src="src/static/demos/admin_users.png" alt="Screenshot Users" width="300px" height="200"/>
         </td>
     </tr>
 </table>
