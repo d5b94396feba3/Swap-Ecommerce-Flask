@@ -77,6 +77,7 @@ YouTube : https://youtu.be/wgJmhHc3aTc
 	
 ```
   Mail configuration : 
+  
       MAIL_SERVER='smtp.gmail.com' # mail server default gmail 
       MAIL_USERNAME='' # mail server username
       MAIL_PASSWORD='' # mail server password
@@ -87,6 +88,7 @@ YouTube : https://youtu.be/wgJmhHc3aTc
 
 ```
   Stripe configuration : 
+  
       publishable_key='' # publishable_key
       stripe.api_key=''  # stripe api key
 ```
