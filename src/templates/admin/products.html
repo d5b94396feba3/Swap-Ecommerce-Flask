@@ -1,0 +1,319 @@
+{% extends "admin/layout.html" %}
+
+{% block head %}
+
+
+
+
+    <title>Swap Admin Panel</title>
+
+    <!-- Core Css -->
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/datatables.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/line-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/jquery.mCustomScrollbar.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/bootstrap-select.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/bootstrap-slider.css')}}">
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/style.min.css')}}">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+{% endblock head %}
+
+
+{% block content %}
+
+    <!-- ########## START: MAIN PANEL ########## -->
+    <section class="mainpanel">
+        <div class="pagebody">
+            <!----======= Start UI elememnts =======---->
+            <!--             <div class="pagetitle">
+                <h4>UI elememnts</h4>
+
+                    <ul class="buuton-group mt-3">
+                       <li><button type="button" class="btn btn-secondary waves-effect waves-light">All Product</button>
+                        </li>
+                         <li><button type="button" class="btn btn-secondary waves-effect waves-light">Bands</button>
+                        </li>
+                         <li><button type="button" class="btn btn-secondary waves-effect waves-light">Categories</button>
+                        </li>
+
+                    </ul>
+
+
+            </div> -->
+            <div class="card mb-5 mt-4">
+                 {% include "_messages.html" %}
+                 
+                <div class="card-header py-4">
+
+                <h4 class="text-secondary font-weight-bold mb-0 mt-1
+                     ml-3">Products
+                </h4>
+                </div>
+            </div>
+
+
+            <!-- Start Radio Button -->
+            <div class="card mb-5 mt-4">
+                <div class="card-header py-4">
+                    <!--                     <h5 class="text-secondary font-weight-bold mb-0">UI Switch</h5> -->
+                    <ul class="buuton-group ">
+                        <li><button type="button" class="btn btn-secondary waves-effect waves-light">
+                                <a style="color: white;" href="{{url_for('products')}}" >All Products</a>
+                            </button>
+                        </li>
+                        <li><button type="button" class="btn btn-secondary waves-effect waves-light"><a style="color: white;" href="/apparels">Apparels</a></button>
+                        </li>
+                        <li><button type="button" class="btn btn-secondary waves-effect waves-light"><a style="color: white;" href="/categories">Categories</a></button>
+                        </li>
+                    </ul>
+                </div>
+                <h5 class="text-secondary font-weight-bold mb-1 mt-3
+                     ml-3">Adding Options
+                    <ul class="buuton-group mt-2">
+                        <li><button type="button" class="btn btn-secondary waves-effect waves-light">
+                                <a style="color: white;" href="{{url_for('add_product')}}">Product</a>
+                            </button>
+                        </li>
+                        <li><button type="button" class="btn btn-secondary waves-effect waves-light">
+                                <a style="color: white;" href="{{url_for('add_apparel')}}">Apparel</a>
+                            </button>
+                        </li>
+                        <li><button type="button" class="btn btn-secondary waves-effect waves-light">
+                                <a style="color: white;" href="{{url_for('add_category')}}">Category</a>
+                            </button>
+                        </li>
+                    </ul>
+                </h5>
+            </div>
+            <!-- End Radio Button -->
+            <!-- Start Checkbox Button -->
+            <div class="card mb-5">
+                <!--                <div class="card-header py-4">
+                    <h5 class="text-secondary font-weight-bold mb-0">UI Checkbox</h5>
+                </div> -->
+                <div class="card-body">
+
+
+                    <div class="row">
+                        {% if products %}
+                        {% for product in products.items %}
+                        <div class="col-md-3 mt-3">
+                            <div class="card border border-dark" style="background-color: black;">
+                                <img src="{{url_for('static',filename='images/'+product.image_1)}}" alt="{{product.name}}" class="card-img-top" style="background-color: black;" height="200">
+                                <div class="card-body " style="background-color: black; height: 7rem;">
+                                    {% if product.discount > 0 %}
+                                    {% set new_dis = "%0.2f" | format((product.price |float)-(product.discount/100)*product.price|float) %}
+                                    <h5 class="text-center" style="color: white; font-size: 19px;">{{product.name}}</h5>
+                                    <h5 class="text-center" style="color: red; font-size: 17px;"> ${{new_dis}}</h5>
+                                    <p class="text-center" style="color: white;">Price: <strike>${{product.price}}</strike> ({{product.discount}}% OFF)</p>
+                                    {% else %}
+                                    <h5 class="text-center" style="color: white;">{{product.name}}</h5>
+                                    <p class="text-center" style="color: white;">Price ${{product.price}}</p>
+                                    {% endif %}
+                                </div>
+                                <div class="card-footer" style="background-color: black;">
+                                    <!-- <input type="hidden" name="recommand_product" value="{{product.name}}"> -->
+                                    <a href="{{url_for('update_product',id=product.id)}}" class="float-left btn btn-sm btn-primary">Edit</a>
+                                    <form action="{{url_for('AddCart')}}" method="POST">
+                                        <input type="hidden" name="product_id" value="{{product.id}}">
+                                        <button type="button" class="btn btn-danger btn-sm float-right" data-toggle="modal" data-target="#exampleModal-{{product.id}}">Delete</button>
+                                        <input type="hidden" name="quantity" id="" value="1">
+                                        <!--                 {% set colors=product.colors.split(',') %}
+                
+                <select name="colors" id="colors" style="visibility: hidden;">
+                    {% for color in colors %}
+                    {% set col=color.split(':') %}
+                    <option value="{{col[0]}}">{{col[0]|capitalize}}</option>
+                    {% endfor %}
+                </select> -->
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal-{{product.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">{{product.name}}</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <span class="text-info">Are you sure that you want to delete this product ( {{product.name}} ) ?</span>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">Cancel</button>
+                                            <form action="{{url_for('delete_product',id=product.id)}}" method="POST">
+                                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            {% if products.has_prev %}
+                            <a href="{{url_for('products',page=products.prev_num)}}" class="btn btn-outline-dark btn-sm mt-3">Previus</a>
+                            {% endif %}
+                            {% if products.total > 2 %}
+                            {% for page_num in products.iter_pages(left_edge=1, right_edge=2, left_current=1, right_current=2) %}
+                            {% if page_num %}
+                            {% if products.page == page_num %}
+                            <a href="{{url_for('products',page=page_num)}}" class="btn btn-dark btn-sm mt-3">
+                                {{page_num}}</a>
+                            {% else %}
+                            <a href="{{url_for('products',page=page_num)}}" class="btn btn-outline-dark btn-sm mt-3">{{page_num}}</a>
+                            {% endif %}
+                            {% else %}
+                            ...
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                            {% if products.has_next %}
+                            <a href="{{url_for('products',page=products.next_num)}}" class="btn btn-outline-dark btn-sm mt-3">Next</a>
+                            {% endif %}
+                        </div>
+                    </div>
+
+{% elif apparels %}
+
+<h5 class="text-secondary font-weight-bold mb-0 mt-3
+                     ml-3">Showing apparels
+</h5>
+
+<table class="table table-sm table-condensed table-striped table-hover mt-3">
+<!--     {% include '_messages.html' %}
+ -->    <thead class="table-theme-bg">
+        <th style="font-size: 20px;">#</th>
+        <th style="font-size: 20px;">Apparel</th>
+        <th style="font-size: 20px;">Modify</th>
+        <th style="font-size: 20px;">Modify</th>
+    </thead>
+    <tbody>
+
+{% for apparel in apparels %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{apparel.name}}</td>
+            <td><a href="{{url_for('update_apparel',id=apparel.id)}}" class="btn btn-sm btn-outline-info">Edit</a></td>
+            <td>
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal-{{apparel.id}}">Delete</button>
+            </td>
+        </tr>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal-{{apparel.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">{{apparel.name}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <span class="text-info">Are you sure that you want to delete this apparel {{apparel.name}} ?</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">Cancel</button>
+                        <form action="{{url_for('delete_apparel',id=apparel.id)}}" method="POST">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<h5 class="text-secondary font-weight-bold mb-0 mt-3
+                     ml-3">Showing categories
+</h5>
+<table class="table table-sm table-condensed table-striped table-hover mt-3">
+<!--     {% include '_messages.html' %}
+ -->    <thead class="table-theme-bg">
+        <th style="font-size: 20px;">#</th>
+        <th style="font-size: 20px;">Category</th>
+        <th style="font-size: 20px;">Modify</th>
+        <th style="font-size: 20px;">Modify</th>
+    </thead>
+    <tbody>
+
+
+{% for category in categories %}
+    <tbody>
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{category.name}}</td>
+            <td><a href="{{url_for('update_category',id=category.id)}}" class="btn btn-sm btn-outline-info">Edit</a></td>
+            <td>
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal-{{category.id}}">Delete</button>
+            </td>
+        </tr>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal-{{category.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">{{category.name}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <span class="text-info">Are you sure that you want to delete this category {{category.name}} ?</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">Cancel</button>
+                        <form action="{{url_for('delete_category',id=category.id)}}" method="POST">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </div>
+                </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+
+         </div>
+    </div>
+
+        </div>
+    </section>
+    <!-- ########## END: MAIN PANEL ########## -->
+{% endblock content %}
+
+{% block scripts %}
+<script src="assets/scripts/jquery.min.js"></script>
+<script src="assets/scripts/popper.min.js"></script>
+<script src="assets/scripts/bootstrap-slider.min.js"></script>
+<script src="assets/scripts/bootstrap.min.js"></script>
+<script src="assets/scripts/bootstrap.bundle.min.js"></script>
+<script src="assets/scripts/bootstrap-select.min.js"></script>
+<script src="assets/scripts/bootstrap-tooltip-custom-class.js"></script>
+<script src="assets/scripts/jquery.mCustomScrollbar.js"></script>
+<script src="assets/scripts/datatables.min.js"></script>
+<script src="assets/scripts/ripple.min.js"></script>
+<script src="assets/scripts/custome.js"></script>
+<script src="{{url_for('static', filename='assets/scripts/jquery.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/popper.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/bootstrap-slider.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/bootstrap.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/bootstrap.bundle.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/bootstrap-select.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/bootstrap-tooltip-custom-class.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/jquery.mCustomScrollbar.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/datatables.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/ripple.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/custome.js')}}"></script>
+
+{% endblock scripts %}
