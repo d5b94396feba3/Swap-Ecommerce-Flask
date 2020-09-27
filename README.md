@@ -25,11 +25,11 @@ YouTube : https://youtu.be/wgJmhHc3aTc
     <tr>
         <td align="center">
          <p>Home Page</p>
-        <img src="src/static/demos/Home_page.png" alt="Screenshot Home" width="300px" />   
+        <img src="src/static/demos/Home_page.png" alt="Screenshot Home" width="395px" />   
         </td>
         <td align="center">
         <p>Search Results</p>
-         <img src="src/static/demos/search.png" alt="Screenshot Search" width="300px" height="372"/>
+         <img src="src/static/demos/search.png" alt="Screenshot Search" width="386px" height="506"/>
         </td>
     </tr>
     <tr>
