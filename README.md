@@ -55,11 +55,11 @@ YouTube : https://youtu.be/wgJmhHc3aTc
     <tr>
         <td align="center">
         	         <p>Confirm Order</p>
-                <img src="src/static/demos/confirm_orders.png" alt="Screenshot Confirm Order" width="560px" height=300"/>
+                <img src="src/static/demos/confirm_orders.png" alt="Screenshot Confirm Order" width="610px" height=280"/>
         </td>
         <td align="center">
         	         <p>Dashboard Users</p>
-                <img src="src/static/demos/admin_users.png" alt="Screenshot Users" width="560px" height=300"/>
+                <img src="src/static/demos/admin_users.png" alt="Screenshot Users" width="610px" height=280"/>
         </td>
     </tr>
 </table>
