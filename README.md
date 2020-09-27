@@ -38,7 +38,7 @@ YouTube : https://youtu.be/wgJmhHc3aTc
            <img src="src/static/demos/customer_carts.png" alt="Screenshot Order" width="510px" height=300"/>
         </td>
 	 <td align="center">
-        	         <p>Admin dashboard</p>
+        	         <p>Admin Dashboard</p>
                 <img src="src/static/demos/admin_dashboard.png" alt="Screenshot Admin Dashboard" width="510px" height=300"/>
         </td>
     </tr>
