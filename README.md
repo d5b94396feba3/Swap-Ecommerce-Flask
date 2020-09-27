@@ -31,16 +31,18 @@ YouTube : https://youtu.be/wgJmhHc3aTc
         <p>Search Results</p>
          <img src="src/static/demos/search.png" alt="Screenshot Search" width="300px" height="372"/>
         </td>
+    </tr>
+    <tr>
         <td align="center">
            <p>Order Page</p>
            <img src="src/static/demos/customer_carts.png" alt="Screenshot Order" width="300px" height="200"/>
         </td>
-    </tr>
-    <tr>
-        <td align="center">
+	 <td align="center">
         	         <p>Admin dashboard</p>
                 <img src="src/static/demos/admin_dashboard.png" alt="Screenshot Admin Dashboard" width="300px" height="200"/>
         </td>
+    </tr>
+    <tr>
         <td align="center">
         	         <p>Dashboard Products</p>
                 <img src="src/static/demos/product_dashboard.png" alt="Screenshot Products" width="300px" height="200"/>
@@ -76,7 +78,7 @@ YouTube : https://youtu.be/wgJmhHc3aTc
 3. Setup
 	
 ```
-  Mail configuration : 
+  Mail Configuration : 
   
       MAIL_SERVER='smtp.gmail.com' # mail server default gmail 
       MAIL_USERNAME='' # mail server username
@@ -87,7 +89,7 @@ YouTube : https://youtu.be/wgJmhHc3aTc
 ```
 
 ```
-  Stripe configuration : 
+  Stripe Configuration : 
   
       publishable_key='' # publishable_key
       stripe.api_key=''  # stripe api key
