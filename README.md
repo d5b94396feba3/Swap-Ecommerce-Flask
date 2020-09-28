@@ -91,7 +91,7 @@ YouTube : https://youtu.be/wgJmhHc3aTc
 ```
   Stripe Configuration : 
   
-      publishable_key='' # publishable_key
+      publishable_key='' # stripe publishable key
       stripe.api_key=''  # stripe api key
 ```
 
