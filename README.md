@@ -80,7 +80,7 @@ YouTube : https://youtu.be/wgJmhHc3aTc
 ```
   Mail Configuration : 
   
-      MAIL_SERVER='smtp.gmail.com' # mail server default gmail 
+      MAIL_SERVER='' # mail server 
       MAIL_USERNAME='' # mail server username
       MAIL_PASSWORD='' # mail server password
       MAIL_PORT=465
