@@ -62,7 +62,6 @@ def send_password(password,email):
     msg = Message('Reset Password', sender=sender, recipients=[recipient])
     msg.html=render_template('email/change_password.html', user=current_user,password=password)
     mail.send(msg)
-    print('send_password')
     flash(f'Password sent to your email.', 'success')
     return redirect(url_for('login'))
 
