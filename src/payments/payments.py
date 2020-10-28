@@ -131,7 +131,7 @@ def get_pdf(invoice):
             rendered = render_template('customer/pdf.html', invoice=invoice, tax=tax,
                 grandTotal=grandTotal,customer=customer,orders=orders)
 
-            
+            # change the path according your directory wkhtmltopdf
             config = pdfkit.configuration(wkhtmltopdf='C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe')
             #pdf=pdfkit.from_url(rendered, 'out-test.pdf', configuration=config)
             pdf = pdfkit.from_string(rendered, False, configuration=config)
