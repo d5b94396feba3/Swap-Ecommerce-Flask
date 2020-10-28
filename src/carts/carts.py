@@ -105,7 +105,6 @@ def deleteitem(id):
 @app.route('/clearcart')
 def clearcart():
 	try:
-		#session.clear()
 		session.pop('cart',None)
 		return redirect(url_for('index'))
 	except Exception as e:
