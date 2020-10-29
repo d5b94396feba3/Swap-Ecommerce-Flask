@@ -103,7 +103,6 @@ def update_apparel(id):
 		update_apparel=update_apparel)
 
 
-
 @app.route('/delete/apparel/<int:id>',methods=['GET','POST'])
 @login_required
 def delete_apparel(id):
@@ -118,8 +117,6 @@ def delete_apparel(id):
 
 	flash(f'The apparel {apparel.name} cant be deleted','warning')
 	return render_template(url_for('products'))
-
-
 
 
 @app.route('/delete/category/<int:id>',methods=['GET','POST'])
@@ -153,7 +150,6 @@ def update_category(id):
 		return redirect(url_for('category'))
 	return render_template('products/update_apparel.html',
 		update_category=update_category)
-
 
 
 @app.route('/add/apparel',methods=['GET','POST'])
@@ -275,7 +271,6 @@ def update_product(id):
 		categories=categories,product=product)
 
 
-
 @app.route('/delete/product/<int:id>',methods=['GET','POST'])
 @login_required
 def delete_product(id):
@@ -300,7 +295,6 @@ def delete_product(id):
 
 	flash(f'The product {product.name} cant be deleted','warning')
 	return render_template(url_for('products'))
-
 
 
 @app.errorhandler(404)
