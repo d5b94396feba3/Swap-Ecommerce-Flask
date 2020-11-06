@@ -67,8 +67,6 @@ def unconfirm_orders(id):
     return render_template('admin/update_orders.html',orders=orders)
 
 
-
-
 @app.route('/dashboard/edit',methods=['GET','POST'])
 @login_required
 def update_admin_profile():
@@ -116,7 +114,6 @@ def update_admin_profile():
 
 
     return render_template('admin/update_profile.html')
-
 
 
 
