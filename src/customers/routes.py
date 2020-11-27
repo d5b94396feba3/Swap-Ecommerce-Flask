@@ -24,7 +24,6 @@ def customer_profile():
 @login_required
 def update_customer_profile():
 
-
     form=CustomerUpdateForm()
 
     user = Register.query.filter_by(id=current_user.id).first()
@@ -99,8 +98,6 @@ def customer_register():
         return redirect(url_for('login'))
     return render_template('customer/register.html',form=form,apparels=apparels(),
             categories=categories())
-
-
 
 
 @app.route('/change/password',methods=['GET','POST'])
