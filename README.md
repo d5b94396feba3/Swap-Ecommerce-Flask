@@ -1,4 +1,4 @@
-## Swap Ecommerce Flask
+# Swap Ecommerce Flask
 
 Ecommerce web application using python and flask framework.In this project SQLAlchemy used for database, Stripe used for payment gateway, and flask-mail used for mail.
 
