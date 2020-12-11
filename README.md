@@ -11,7 +11,7 @@ Ecommerce web application using python and flask framework.In this project SQLAl
 4. Cart Managements
 5. Mail Verifications
 6. Stripe Payment Gateway
-7. More....
+7. More...
 
 
 ### Demo 
