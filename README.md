@@ -103,7 +103,7 @@ YouTube : https://youtu.be/wgJmhHc3aTc
 <table align="center">
     <tr>
         <td align="center">
-         <p>Contact for souce code at: shahiburrahman55@gmail.com</p>
+		<p><strong>Contact</strong> for souce code at : shahiburrahman55@gmail.com</p>
         </td>
     </tr>
 </table>
