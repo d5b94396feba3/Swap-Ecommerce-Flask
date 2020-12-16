@@ -1,0 +1,208 @@
+{% extends "admin/layout.html" %}
+
+{% block head %}
+
+
+    <title>Swap Admin Panel</title>
+    <!-- Core Css -->
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/datatables.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/line-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/jquery.mCustomScrollbar.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/bootstrap-select.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/bootstrap-slider.css')}}">
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/style.min.css')}}">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+{% endblock head %}
+
+{% block content %}
+
+
+    <!-- ########## START: MAIN PANEL ########## -->
+    <section class="mainpanel">
+        <div class="pagebody">
+            <!----======= Start UI elememnts =======---->
+            <!--             <div class="pagetitle">
+                <h4>UI elememnts</h4>
+
+                    <ul class="buuton-group mt-3">
+                       <li><button type="button" class="btn btn-secondary waves-effect waves-light">All Product</button>
+                        </li>
+                         <li><button type="button" class="btn btn-secondary waves-effect waves-light">Bands</button>
+                        </li>
+                         <li><button type="button" class="btn btn-secondary waves-effect waves-light">Categories</button>
+                        </li>
+
+                    </ul>
+
+
+            </div> -->
+
+            <div class="card mb-5 mt-4">
+                 {% include "_messages.html" %}
+                 {% if admins %}
+                <div class="card-header py-4">
+
+                <h4 class="text-secondary font-weight-bold mb-0 mt-1
+                     ml-3">Admins
+                </h4>
+                </div>
+                {% else %}
+                <div class="card-header py-4">
+
+                <h4 class="text-secondary font-weight-bold mb-0 mt-1
+                     ml-3">Customers
+                </h4>
+                </div>
+
+                {% endif %}
+            </div>
+
+
+            <!-- Start Radio Button -->
+            <div class="card mb-5 mt-4">
+                <div class="card-header py-4">
+                    <!--                     <h5 class="text-secondary font-weight-bold mb-0">UI Switch</h5> -->
+                    <ul class="button-group mt-1">
+                        <li><button type="button" class="btn btn-secondary waves-effect waves-light">
+                                <a style="color: white;" href="{{url_for('dashboard_users',name='customer')}}" > Customers</a>
+                            </button>
+                        </li>
+                        <li class="ml-3"><button type="button" class="btn btn-secondary waves-effect waves-light"><a style="color: white;" href="{{url_for('dashboard_users',name='admin')}}">Admins</a></button>
+                        </li>
+             
+                    </ul>
+                </div>
+            </div>
+            <!-- End Radio Button -->
+            <!-- Start Checkbox Button -->
+            <div class="card mb-5">
+
+                <div class="card-body">
+
+                {% if admins %}
+                <h5 class="text-secondary font-weight-bold mb-0 mt-2
+                     ml-1">Showing admins
+                </h5>
+                <table class="table table-sm table-condensed table-striped table-hover mt-3">
+                    {% include '_messages.html' %}
+                    <thead class="table-theme-bg">
+                        <th style="font-size: 20px;">#</th>
+                        <th style="font-size: 20px;">Name</th>
+                        <th style="font-size: 20px;">Username</th>
+                        <!-- <th style="font-size: 20px;">Password</th> -->
+                        <th style="font-size: 20px;">Access</th>
+                        <th colspan="2" style="font-size: 20px;">Action</th>
+                    </thead>
+                    <tbody>
+                        {% for admin in admins %}
+                        <tr>
+                            <td>{{loop.index}}</td>
+                            <td>{{admin.name}}</td>
+                            <td>{{admin.username}}</td>
+<!--                             <td>{{admin.password}}</td> -->
+                             <td>{{admin.access}}</td>
+                            <td>
+                                {% if admin.access == 'Full' %}
+                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal-{{admin.id}}" disabled>Remove</button>
+                                {% else %}
+                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal-{{admin.id}}">Remove</button>
+                                {% endif %}
+
+                            </td>
+                        </tr>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal-{{admin.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">{{admin.name}}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <span class="text-info">Are you sure that you want to delete this admin {{admin.name}} ?</span>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-warning btn-sm" data-dismiss="modal">Cancel</button>
+                                        <form action="{{url_for('delete_admin_user',id=admin.id)}}" method="POST">
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <h5 class="text-secondary font-weight-bold mb-0 mt-2
+                     ml-1">Showing customers
+                </h5>
+                <table class="table table-sm table-condensed table-striped table-hover mt-3">
+                    {% include '_messages.html' %}
+                    <thead class="table-theme-bg">
+                        <th style="font-size: 20px;">#</th>
+                        <th style="font-size: 20px;">Name</th>
+                        <th style="font-size: 20px;">Username</th>
+                        <th style="font-size: 20px;">Email</th>
+                        <th style="font-size: 20px;">Contact</th>
+                        <th style="font-size: 20px;">Address</th>
+                        <th style="font-size: 20px;">Joined</th>
+                    </thead>
+                    <tbody>
+                        {% for customer in customers %}
+                    <tbody>
+                        <tr>
+                            <td>{{loop.index}}</td>
+                            <td>{{customer.name}}</td>
+                            <td>{{customer.username}}</td>
+                            <td>{{customer.email}}</td>
+                            <td>{{customer.contact}}</td>
+                            <td>{{customer.zipcode}},{{customer.city}},
+                                {{customer.country}}
+                            </td>
+                            <td>{{customer.date_created}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- ########## END: MAIN PANEL ########## -->
+{% endblock content %}
+
+{% block scripts %}
+<script src="assets/scripts/jquery.min.js"></script>
+<script src="assets/scripts/popper.min.js"></script>
+<script src="assets/scripts/bootstrap-slider.min.js"></script>
+<script src="assets/scripts/bootstrap.min.js"></script>
+<script src="assets/scripts/bootstrap.bundle.min.js"></script>
+<script src="assets/scripts/bootstrap-select.min.js"></script>
+<script src="assets/scripts/bootstrap-tooltip-custom-class.js"></script>
+<script src="assets/scripts/jquery.mCustomScrollbar.js"></script>
+<script src="assets/scripts/datatables.min.js"></script>
+<script src="assets/scripts/ripple.min.js"></script>
+<script src="assets/scripts/custome.js"></script>
+<script src="{{url_for('static', filename='assets/scripts/jquery.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/popper.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/bootstrap-slider.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/bootstrap.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/bootstrap.bundle.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/bootstrap-select.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/bootstrap-tooltip-custom-class.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/jquery.mCustomScrollbar.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/datatables.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/ripple.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/custome.js')}}"></script>
+
+{% endblock scripts %}

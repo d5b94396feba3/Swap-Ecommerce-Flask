@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logos/swap.ico') }}" />
+
+    <!-- Bootstrap CSS -->
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}" >
+    <link rel="stylesheet" href="{{url_for('static',filename='css/custom.css')}}" >
+
+    <title>{% block title %} {% endblock %}| The Shop | The Best Shop</title>
+    
+  </head>
+  <body>
+    
+   
+   {% block content %}
+
+   
+
+
+   {% endblock content %}
+
+
+    <!-- Optional JavaScript -->
+
+     <script src="{{url_for('static', filename='js/jquery-3.5.1.slim.min.js')}}" ></script>
+    <script src="{{url_for('static', filename='js/popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+  </body>
+</html>

@@ -1,4 +1,4 @@
-## Swap Ecommerce Flask
+# Swap Ecommerce Flask
 
 Ecommerce web application using python and flask framework.In this project SQLAlchemy used for database, Stripe used for payment gateway, and flask-mail used for mail.
 
@@ -25,44 +25,46 @@ YouTube : https://youtu.be/wgJmhHc3aTc
     <tr>
         <td align="center">
          <p>Home Page</p>
-        <img src="assets/demos/Home_page.png" alt="Screenshot Home" width="300px" />   
+        <img src="src/static/demos/Home_page.png" alt="Screenshot Home" width="395px" />   
         </td>
         <td align="center">
         <p>Search Results</p>
-         <img src="assets/demos/search.png" alt="Screenshot Cart" width="300px" />
-        </td>
-        <td align="center">
-           <p>Order Page</p>
-           <img src="assets/demos/customer_carts.png" alt="Screenshot Category" width="300px" />
+         <img src="src/static/demos/search.png" alt="Screenshot Search" width="386px" height="506"/>
         </td>
     </tr>
     <tr>
         <td align="center">
-        	         <p>Admin dashboard</p>
-                <img src="assets/demos/admin_dashboard.png" alt="Screenshot Admin Panel" width="300px" />
+           <p>Order Page</p>
+           <img src="src/static/demos/customer_carts.png" alt="Screenshot Order" width="560px" height=300"/>
         </td>
+	 <td align="center">
+        	         <p>Admin Dashboard</p>
+                <img src="src/static/demos/admin_dashboard.png" alt="Screenshot Admin Dashboard" width="560px" height=300"/>
+        </td>
+    </tr>
+    <tr>
         <td align="center">
         	         <p>Dashboard Products</p>
-                <img src="assets/demos/product_dashboard.png" alt="Screenshot Site Configuration" width="300px" />
+                <img src="src/static/demos/product_dashboard.png" alt="Screenshot Products" width="560px" height=300"/>
         </td>
         <td align="center">
         	         <p>Dashboard Orders</p>
-                <img src="assets/demos/order_dashboard.png" alt="Screenshot Order List" width="300px" />
+                <img src="src/static/demos/order_dashboard.png" alt="Screenshot Order List" width="560px" height=300"/>
         </td>
     </tr>
     <tr>
         <td align="center">
         	         <p>Confirm Order</p>
-                <img src="assets/demos/confirm_orders.png" alt="Screenshot Admin Panel" width="300px" />
+                <img src="src/static/demos/confirm_orders.png" alt="Screenshot Confirm Order" width="610px" height=280"/>
         </td>
         <td align="center">
         	         <p>Dashboard Users</p>
-                <img src="assets/demos/admin_users.png" alt="Screenshot Site Configuration" width="300px" />
+                <img src="src/static/demos/admin_users.png" alt="Screenshot Users" width="610px" height=280"/>
         </td>
     </tr>
 </table>
 
-### Usage
+## Usage
 
 1. Requirements
 
@@ -75,9 +77,10 @@ YouTube : https://youtu.be/wgJmhHc3aTc
 
 3. Setup
 	
-	* Mail configuration : 
 ```
-      MAIL_SERVER='smtp.gmail.com' # mail server default gmail 
+  Mail Configuration : 
+  
+      MAIL_SERVER=''   # mail server 
       MAIL_USERNAME='' # mail server username
       MAIL_PASSWORD='' # mail server password
       MAIL_PORT=465
@@ -85,10 +88,11 @@ YouTube : https://youtu.be/wgJmhHc3aTc
       MAIL_USE_TLS=False    
 ```
 
-	* Stripe configuration : 
 ```
-   	  publishable_key='' # publishable_key
-	  stripe.api_key=''  # stripe api key
+  Stripe Configuration : 
+  
+      publishable_key='' # stripe publishable key
+      stripe.api_key=''  # stripe api key
 ```
 
 4. Running

@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block content %}
+{% from "_formhelpers.html" import render_field %}
+{% include 'navbar.html' %}
+<div class="container" style="color: white; opacity: 0.7; margin-bottom: 140px; margin-top: 60px;">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<h2 class="text-center h2 text-white p-2">
+				Register
+			</h2>
+					<hr style="border-top: 1px dotted #8c8b8b; ">
+
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+
+	<form action="" method="POST" style="color: white;">
+		<div class="row">
+			{{ form.csrf_token }}
+
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				
+				{{render_field(form.name, class="form-control",style="color: black; background-color: #E1DEDE;")}}
+				{{render_field(form.username, class="form-control",style="color: black; background-color: #E1DEDE;")}}
+				{{render_field(form.email, class="form-control",style="color: black; background-color: #E1DEDE;")}}
+				{{render_field(form.password, class="form-control",style="color: black; background-color: #E1DEDE;")}}
+				{{render_field(form.confirm, class="form-control",style="color: black; background-color: #E1DEDE;")}}
+				{{form.profile()}}
+
+			</div>
+
+
+			<div class="col-md-4">
+
+				{{render_field(form.country, class="form-control",style="color: black; background-color: #E1DEDE;")}}
+				{{render_field(form.city, class="form-control",style="color: black; background-color: #E1DEDE;")}}
+				{{render_field(form.contact, class="form-control",style="color: black; background-color: #E1DEDE;")}}
+				{{render_field(form.address, class="form-control",style="color: black; background-color: #E1DEDE;")}}
+				{{render_field(form.zipcode, class="form-control",style="color: black; background-color: #E1DEDE;")}}
+				<p style="margin-bottom: 0px; margin-top: 4px; float: left;">Already have an account?
+   				<a href="{{ url_for('login') }}" style="color: white;">Login</a></p>
+				{{form.submit(class="btn btn-sm btn-dark float-right")}}
+
+				
+			</div>
+
+
+			<div class="col-md-2"></div>
+
+		</div>
+	</form>
+</div>
+{% include 'footer.html' %}
+{% endblock content %}

@@ -1,0 +1,172 @@
+<!-- navbar starts -->
+<style type="text/css">
+  
+@media (min-width: 992px) {
+    .dropdown:hover .dropdown-menu {
+        display: block;
+        top: 95%; 
+
+    }
+}
+
+</style>
+<div class="container">
+
+<nav class="navbar navbar-black bg-black justify-content-center">
+  <a class="navbar-brand" href="/"><img src="{{url_for('static',filename='logos/swap.png')}}" width="170" height="70" alt="swap.png" 
+              style="opacity: 0.95;"></a>
+  <form action="{{url_for('search')}}" method="POST" class="form-inline">
+        <div class="row">
+        <div class="col-12">
+            <div class="input-group">
+                <input id ="input_id" name="search" style="font-size: 20px; border:0; background-color:black; color: white; opacity: 0.5;" class="form-control text-white bg-dark rounded-right" type="search" placeholder="Search all products..." >
+                <div class="input-group-append">
+                    <button class="btn btn-black" type="submit" style="font-size: 20px;">
+                        <i style="color: white; font-size: 24px; opacity: 0.9;" class="fa fa-search" aria-hidden="true"></i>
+
+                    </button>
+                </div>
+
+                <div class="box" style="font-size: 20px;">
+
+                <a style="color: white;" class="nav-link" href="{{url_for('getCart')}}" tabindex="-1" ><i class="fa fa-shopping-cart" style="font-size: 24px; opacity: 0.9;" aria-hidden="true"></i>
+                  Cart ( {{session['cart']|length}} )
+                </a>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+  </form>
+
+</nav>
+
+
+	<nav class="navbar navbar-expand-lg navbar-black bg-dark">
+  
+  <button sytle="backcolor:red;" id="nav-toggle-button" class="navbar-toggler"style="color: white;" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fa fa-bars" aria-hidden="true"> Menu</i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" style="margin: 0 auto;">
+<!--       <li class="nav-item">
+        <a class="nav-link" href="/">All products</a>
+      </li> -->
+      <li class="nav-item dropdown ">
+      <a style="color: white; padding-right:8px;" class="navbar-brand" href="/">
+<!--       <i style="font-size: 18px;" class="fa fa-th-large" aria-hidden="true"></i>
+ -->       <b style="opacity: 0.9;">Home</b></a>
+    </li>
+      <li class="nav-item dropdown">
+        <a style="color: white; padding-left:8px;" class="nav-link navbar-brand" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <!-- <i class="fa fa-bars" aria-hidden="true"></i> --> <b style="opacity: 0.9;"> Apparel</b>
+        </a> 
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#212529;">
+        	{% for apparel in apparels %}
+          <a class="dropdown-item text-white bg-dark" href="{{url_for('get_apparels',id=apparel.id)}}">{{apparel.name}}</a>
+        	{% endfor %}
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a style="color: white; padding-left:8px;" class="nav-link navbar-brand" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <!-- <i class="fa fa-bars" aria-hidden="true"></i> --> <b style="opacity: 0.9;">Categories</b>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#212529;">
+        	{% for category in categories %}
+          <a class="dropdown-item text-white bg-dark" href="{{url_for('get_categories',id=category.id)}}">{{category.name}}</a>
+        	{% endfor %}
+        </div>
+      </li>
+      
+      {% if current_user.is_authenticated %}
+
+<!--        <li class="nav-item">
+        <a style="color: white; padding-left:8px;" href="{{url_for('logout')}}" class="navbar-brand">
+          <i style="font-size: 15px;" class="fa fa-user" aria-hidden="true"></i>  {{current_user.name}}
+        </a>
+      </li> -->
+      {% if session['is_admin'] %}
+        <li class="nav-item dropdown">
+        <a style="color: white; padding-left:8px;" class="nav-link navbar-brand" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <!--  <i class="fa fa-bars" aria-hidden="true"></i> -->
+         <b style="opacity: 0.9;">Account</b> 
+        </a>
+        <div class="dropdown-menu " aria-labelledby="navbarDropdown" style="background-color:#212529;">
+        <a class="dropdown-item text-white bg-dark" href="{{url_for('dashboard_users',name='admin')}}" class="navbar-brand">
+          <i style="font-size: 18px; margin-right: 5px;" class="fa fa-user-circle" aria-hidden="true"></i> Profile
+        </a>
+
+          <a class="dropdown-item text-white bg-dark" href="{{url_for('dashboard')}}" class="navbar-brand">
+          <i style="font-size: 16px; margin-right: 5px;" class="fa fa-bars" aria-hidden="true"></i> Dashboard 
+        </a>
+
+          <a class="dropdown-item text-white bg-dark" href="{{url_for('update_admin_profile')}}" class="navbar-brand">
+          <i style="font-size: 16px; margin-right: 5px;" class="fas fa-user-edit" aria-hidden="true"></i> Update Profile
+        </a>
+                <a class="dropdown-item text-white bg-dark" href="{{url_for('logout')}}" class="navbar-brand">
+          <i style="font-size: 16px; margin-right: 5px;" class="fas fa-sign-out-alt" aria-hidden="true"></i> LogOut
+        </a>
+         
+        </div>
+      </li>
+
+      {% else %}
+        <li class="nav-item dropdown">
+        <a style="color: white; padding-left:8px;" class="nav-link navbar-brand" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">         
+          <b style="opacity: 0.9;">Account</b>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#212529;">
+        <a class="dropdown-item text-white bg-dark" href="{{url_for('customer_profile')}}" class="navbar-brand">
+          <i style="font-size: 18px; margin-right: 5px;" class="fa fa-user-circle" aria-hidden="true"></i> Profile
+        </a>
+
+          <a class="dropdown-item text-white bg-dark" href="{{url_for('update_customer_profile')}}" class="navbar-brand">
+          <i style="font-size: 16px; margin-right: 5px;" class="fas fa-user-edit" aria-hidden="true"></i> Update Profile
+        </a>
+                <a class="dropdown-item text-white bg-dark" href="{{url_for('logout')}}" class="navbar-brand">
+          <i style="font-size: 16px; margin-right: 5px;" class="fas fa-sign-out-alt" aria-hidden="true"></i> LogOut
+        </a>
+         
+        </div>
+      </li>
+
+     {% endif %}
+
+<!--       <li class="nav-item">
+        <a style="color: white; padding-left:8px;" href="{{url_for('logout')}}" class="navbar-brand"> <i style="font-size: 16px;" class="fas fa-sign-out-alt"></i> Logout</a>
+      </li> -->
+      {% else %}
+
+            <li class="nav-item dropdown">
+        <a style="color: white; padding-left:8px;" class="nav-link navbar-brand" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        
+        <b style="opacity: 0.9;">Account</b>
+        </a>
+        <div class="dropdown-menu " aria-labelledby="navbarDropdown" style="background-color:#212529;">
+
+
+        <a class="dropdown-item text-white bg-dark" href="{{url_for('login')}}" class="navbar-brand">
+          <i style="font-size: 16px; margin-right: 5px;" class="fas fa-sign-in-alt" aria-hidden="true"></i> Sign In
+        </a>
+
+
+        <a class="dropdown-item text-white bg-dark" href="{{url_for('customer_register')}}" class="navbar-brand">
+          <i style="font-size: 16px; margin-right: 5px;" class="fa fa-user-plus" aria-hidden="true"></i> Sign Up
+        </a>
+         
+        </div>
+      </li>
+
+      {% endif %}
+
+    </ul>
+  </div>
+</nav>
+<hr><hr>
+</div>
+<!-- navbar ends -->
