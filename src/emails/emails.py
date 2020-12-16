@@ -11,7 +11,7 @@ def recipient_email():
 
 
 def default_email():
-    return '' #mail username
+    return 'windowsking55@gmail.com' #mail username
 
 
 @app.route('/account/confirmation/sent')

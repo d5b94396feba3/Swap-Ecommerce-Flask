@@ -13,9 +13,11 @@ import stripe
 
 
 
-publishable_key='' # your publishable_key
 
-stripe.api_key=''  # your stripe api key
+publishable_key='pk_test_51HM661Jl9M4WaF3tyfBVDzXROWvUANWRSZRPxs48LzR7MzvuUr4MbU2G8UTruhQ86YmpBskctZg6qrWtp3D62UCy00qZaBjF3e'
+
+stripe.api_key='sk_test_51HM661Jl9M4WaF3tvDi3EIJZJgV1vqxmr2evTmivTSwJQNfBDTp98Xa0Ap3n5JyrVfuyf5w6Ak6dUAAn6vyA83bj00wpWbzcwy'
+
 
 
 @app.route('/payment/confirm',methods=['POST'])
