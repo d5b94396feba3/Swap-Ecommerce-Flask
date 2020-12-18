@@ -102,7 +102,7 @@ YouTube : https://youtu.be/wgJmhHc3aTc
 <hr>
 <table align="center">
     <tr>
-        <td align="center" style="margin-top:9px;">
+        <td align="center">
 	<p><strong>Contact</strong> for source code at : shahiburrahman55@gmail.com</p>
         </td>
     </tr>
