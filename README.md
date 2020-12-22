@@ -100,6 +100,7 @@ YouTube : https://youtu.be/wgJmhHc3aTc
      python run.py
 ```
 <hr>
+
 <table align="center">
     <tr>
         <td align="center">
