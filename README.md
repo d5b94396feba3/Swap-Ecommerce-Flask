@@ -13,6 +13,7 @@ Ecommerce web application using python and flask framework.In this project SQLAl
 6. Stripe Payment Gateway
 7. More....
 
+
 ### Demo 
 
 YouTube : https://youtu.be/wgJmhHc3aTc
