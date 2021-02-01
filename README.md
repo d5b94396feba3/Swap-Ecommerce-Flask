@@ -104,7 +104,8 @@ YouTube : https://youtu.be/wgJmhHc3aTc
 <table align="center">
     <tr>
         <td align="center">
-	<p><strong>Contact</strong> for source code at : shahiburrahman55@gmail.com</p>
+<!-- 	<p><strong>Contact</strong> for source code at : shahiburrahman55@gmail.com</p> -->
+		<p>Project source code has been removed, for source code contact me via email.</p>
         </td>
     </tr>
 </table>
