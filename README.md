@@ -4,11 +4,11 @@ This project is a sample Ecommerce web application developed for learning purpos
 
 ## Features
 
-- **Database:** SQLAlchemy is used for managing the database. The database schema and models can be found in the `models` directory.
+- **Database:** SQLAlchemy is used for managing the database. 
 
-- **Payment Gateway:** Stripe is integrated into the application for handling online payments. Ensure you have the necessary API keys and configurations in the `config.py` file.
+- **Payment Gateway:** Stripe is integrated into the application for handling online payments. 
 
-- **Email:** Flask-Mail is used for sending emails. Configure your email settings in the `config.py` file to enable features like order confirmation emails.
+- **Email:** Flask-Mail is used for sending emails.
 
 ### Features
 
