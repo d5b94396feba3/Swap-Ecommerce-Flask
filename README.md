@@ -1,6 +1,6 @@
 # Swap Ecommerce Flask
 
-# Ecommerce Web Application using Python and Flask (For Learning Purpose)
+## Ecommerce Web Application using Python and Flask (For Learning Purpose)
 
 This project is a sample Ecommerce web application developed for learning purposes, using the Python programming language and Flask web framework.
 
