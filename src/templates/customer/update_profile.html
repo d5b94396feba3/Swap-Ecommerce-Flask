@@ -1,0 +1,173 @@
+{% extends 'layout.html' %}
+
+{% block title %}Profile {% endblock %}
+
+
+{% block content %}
+
+{% from "_formhelpers.html" import render_field %}
+
+{% include 'navbar.html' %}
+
+
+
+<div class="container ">
+
+	{% include '_messages.html' %}
+
+
+    <div class="cart user-profile container">
+    <p style="color: white;" class="title">Welcome! {{ user.name }}</p>
+    
+   </div>
+
+
+	<br>
+		<div class="col-md-7 mt-3" style="margin-left: 220px;">
+	
+			<div class="card border border-dark" style="background-color: black;">
+
+				<div class="card-body " style="background-color: black; color:white; height: 9rem; ">
+
+                        <form action="" method="POST" enctype="multipart/form-data">
+                        	{{ form.csrf_token }}
+                        
+
+        				{{render_field(form.name,class="form-control",style="width: 310px;background-color: #E1DEDE;")}}
+                      
+                        <button type="submit" class="btn btn-success waves-effect btn-dark mt-1 btn-sm">Update</button>
+
+                        </form>
+
+				</div>
+
+			</div>
+		</div>
+
+
+			<div class="col-md-7 mt-3" style="margin-left: 220px;">
+	
+			<div class="card border border-dark" style="background-color: black;">
+
+
+				<div class="card-body " style="background-color: black; color:white; height: 29rem; ">
+
+                        <form action="" method="POST" enctype="multipart/form-data">
+                        {{ form.csrf_token }}
+
+
+            				{{render_field(form.city, class="form-control",style="width: 310px;background-color: #E1DEDE;")}}
+
+
+                    		{{render_field(form.zipcode, class="form-control",style="width: 310px;background-color: #E1DEDE;")}}
+
+                            {{render_field(form.contact, class="form-control",style="width: 310px;background-color: #E1DEDE;")}}
+
+
+                            {{render_field(form.address, class="form-control",style="width: 310px;background-color: #E1DEDE;")}}
+
+
+                            {{render_field(form.country, class="form-control",style="width: 310px;background-color: #E1DEDE;")}}
+
+
+                        <button type="submit" class="btn btn-success waves-effect btn-dark mt-3 btn-sm">Update</button>
+                       
+
+                        </form>
+
+				</div>
+
+			</div>
+		</div>
+
+
+				<div class="col-md-7 mt-3" style="margin-left: 220px;">
+	
+			<div class="card border border-dark" style="background-color: black;">
+
+				<div class="card-body " style="background-color: black; color:white; height: 9rem; ">
+
+
+                        <form action="" method="POST" enctype="multipart/form-data">
+
+                        	{{ form.csrf_token }}
+                        
+
+                            {{render_field(form.email, class="form-control",style="width: 310px;background-color: #E1DEDE;")}}
+                      
+
+                            {% if user.is_confirm %}
+                            <a href="#" class="float-right btn btn-sm btn-primary" style="pointer-events:none; opacity: 0.7">Verified</a>
+                              {{form.submit(class="btn btn-success waves-effect btn-dark btn-sm mt-1")}}
+
+
+                            {% else %}
+
+                            <a href="{{url_for('confirm_account')}}" class="btn btn-success waves-effect btn-dark btn-sm" style="opacity: 0.9">Verify</a>
+
+
+                            <a href="#" class="float-right btn btn-sm btn-danger" style="pointer-events:none; opacity: 0.7">Not verified</a>
+                            {% endif %}
+
+
+<!--                         {{form.submit(class="btn btn-success waves-effect btn-dark btn-sm mt-1")}} -->
+                         
+
+                        </form>
+
+				</div>
+
+			</div>
+		</div>
+
+
+
+				<div class="col-md-7 mt-3" style="margin-left: 220px;">
+	
+			<div class="card border border-dark" style="background-color: black;">
+
+				<div class="card-body " style="background-color: black; color:white; height: 13rem; ">
+
+
+						<h4 class="mt-0" style="margin-left: 3px; color: white; opacity: 0.9">Change Password</h4>
+                        <form action="" method="POST" enctype="multipart/form-data">
+                             
+                            <input type="password" id="ct_update_password" name="ct_update_password" class="form-control mt-1" placeholder="New Password" style="width: 310px;background-color: #E1DEDE; " onkeyup='check()' required>
+                       
+
+                            <input type="password" id="ct_update_confirm_password" name="ct_update_confirm_password" class="form-control mt-2" placeholder="Confirm Password" style="width: 310px;background-color: #E1DEDE;" 
+                            onkeyup='check()' required>
+                            
+                      
+                        <button type="submit" id="submit1" class="btn btn-success waves-effect btn-dark mt-3 btn-sm">Update</button>
+
+                        </form>
+
+				</div>
+
+			</div>
+		</div>
+
+
+</div>
+
+<hr><hr>
+
+<script type="text/javascript">
+    
+ var check = function() {
+      if (document.getElementById('ct_update_password').value ==
+          document.getElementById('ct_update_confirm_password').value) {
+          document.getElementById('submit1').disabled = false;
+      } else {
+        
+          document.getElementById('submit1').disabled = true;
+      }
+  }
+
+</script>
+
+
+{% include 'footer.html' %}
+
+{% endblock content%}

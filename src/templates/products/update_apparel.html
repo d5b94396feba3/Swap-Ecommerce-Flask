@@ -1,0 +1,164 @@
+{% extends "admin/layout.html" %}
+{% from "_formhelpers.html" import render_field %}
+
+{% block head %}
+
+
+    <title>Update product | Swap</title>
+
+    <!-- Core Css -->
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/datatables.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/line-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/jquery.mCustomScrollbar.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/bootstrap-select.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/bootstrap-slider.css')}}">
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/style.min.css')}}">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+{% endblock head %}
+
+{% block content %}
+
+    <!-- ########## START: MAIN PANEL ########## -->
+    <section class="mainpanel">
+        <div class="pagebody">
+            <!----======= Start UI elememnts =======---->
+            <!--             <div class="pagetitle">
+                <h4>UI elememnts</h4>
+
+                    <ul class="buuton-group mt-3">
+                       <li><button type="button" class="btn btn-secondary waves-effect waves-light">All Product</button>
+                        </li>
+                         <li><button type="button" class="btn btn-secondary waves-effect waves-light">Bands</button>
+                        </li>
+                         <li><button type="button" class="btn btn-secondary waves-effect waves-light">Categories</button>
+                        </li>
+
+                    </ul>
+
+
+            </div> -->
+            <!-- Start Radio Button -->
+
+            <div class="card mb-5 mt-4">
+                 {% include "_messages.html" %}
+                 
+                <div class="card-header py-4">
+                {% if update_apparel %}
+                <h4 class="text-secondary font-weight-bold mb-0 mt-1
+                     ml-3">Update Apparel
+                </h4>
+                {% else %}
+                <h4 class="text-secondary font-weight-bold mb-0 mt-1
+                     ml-3">Update Category
+                </h4>
+
+                {% endif %}
+                </div>
+            </div>
+
+         <form action="" method="POST" enctype="multipart/form-data" style="color: white;">
+            <div class="card mb-3 mt-3">
+
+                <div class="card-body" style="color: black;">
+                    <ul class="button-group">
+
+
+			{% if update_apparel %}
+<!-- 			<h1 class="text-center mt-5" style="color: black;">Add a apparel</h1>
+ -->			
+
+				<label for="apparel" style="color: black;">Apparel Name</label>	
+ 				<form action="" method="POST" >
+				<input type="text" name="apparel_update" value="{{update_apparel.name}}" class="form-control" style="color: black; background-color: #E1DEDE; width: 310px;">
+				<!-- <input type="submit" value="Add apparel" class="btn btn-success waves-effect waves-primary mt-2"> 
+			<input type="text" name="apparel_update" class="form-control" value="{{update_apparel.name}}">
+
+				-->
+				<button type="submit" class="btn btn-success waves-effect waves-primary btn-sm mt-3"> Submit</button>
+			</form>
+			{% else %}
+<!-- 			<h1 class="text-center mt-5" style="color: black;">Add a category</h1>
+ -->			
+
+ 				<label for="category" style="color: black;">Category Name</label>	
+ 				<form action="" method="POST">
+				<input type="text" name="category_update" value="{{update_category.name}}" class="form-control" style="color: black; background-color: #E1DEDE; width: 310px;">
+				<!-- <input type="submit" value="Add category" class="btn btn-success waves-effect waves-primary mt-2">
+				<input type="text" name="category_update" class="form-control" value="{{update_category.name}}">
+				 -->
+				<button type="submit" class="btn btn-success waves-effect waves-primary btn-sm mt-3 "> Submit</button>
+			</form>
+			{% endif %}
+
+
+
+
+
+                    </ul>
+
+                      </div>
+            </div>
+
+<!-- 
+
+            <div class="card mb-3 mt-3">
+
+                <h5 class="text-secondary font-weight-bold mb-3 mt-3
+                     ml-2"> <button type="submit" class="btn btn-success waves-effect waves-primary"> Submit</button>
+                </h5>
+            </div> -->
+
+        </form>
+            </div>
+
+        </div>
+    </section>
+    <hr><hr>
+
+
+<script type="text/javascript">
+    
+ var check = function() {
+      if (document.getElementById('update_password').value ==
+          document.getElementById('update_confirm_password').value) {
+          document.getElementById('submit').disabled = false;
+      } else {
+        
+          document.getElementById('submit').disabled = true;
+      }
+  }
+
+</script>
+
+{% endblock content %}
+
+{% block scripts %}
+
+<script src="assets/scripts/jquery.min.js"></script>
+<script src="assets/scripts/popper.min.js"></script>
+<script src="assets/scripts/bootstrap-slider.min.js"></script>
+<script src="assets/scripts/bootstrap.min.js"></script>
+<script src="assets/scripts/bootstrap.bundle.min.js"></script>
+<script src="assets/scripts/bootstrap-select.min.js"></script>
+<script src="assets/scripts/bootstrap-tooltip-custom-class.js"></script>
+<script src="assets/scripts/jquery.mCustomScrollbar.js"></script>
+<script src="assets/scripts/datatables.min.js"></script>
+<script src="assets/scripts/ripple.min.js"></script>
+<script src="assets/scripts/custome.js"></script>
+<script src="{{url_for('static', filename='assets/scripts/jquery.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/popper.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/bootstrap-slider.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/bootstrap.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/bootstrap.bundle.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/bootstrap-select.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/bootstrap-tooltip-custom-class.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/jquery.mCustomScrollbar.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/datatables.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/ripple.min.js')}}"></script>
+<script src="{{url_for('static', filename='assets/scripts/custome.js')}}"></script>
+
+{% endblock scripts %}

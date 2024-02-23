@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}Login  {% endblock %}
+{% block content %}
+
+{% include 'navbar.html' %}
+
+<div class="container">
+
+{% from "_formhelpers.html" import render_field %}
+<div class="row" style="color: white; opacity: 0.5; margin-bottom: 140px; margin-top: 60px;">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+
+<div class ="text-center h1 text-white p-2">Login</div>
+<hr style="border-top: 1px dotted #8c8b8b; ">
+{% include '_messages.html' %}
+<form method="post" enctype="multipart/form-data" style="color: white;">
+	{{ form.csrf_token }}
+  <div>
+    {{ render_field(form.email, class="form-control",style="color: black; background-color: #E1DEDE;") }}
+    {{ render_field(form.password, class="form-control",style="color: black; background-color: #E1DEDE;") }}
+  </div>
+<p style="margin-bottom: 0px; color: white;">Don't have an account?
+    <a href="{{ url_for('customer_register') }}" style="color: white;">Signup</a></p>
+<p style="margin-bottom: 0px;"><a href="{{ url_for('change_password') }}" style="color: white;">Forgot Password?</a></p>
+  <p><input type=submit value="Login" class="btn btn-dark mt-2"></p>
+</form>
+
+</div>
+<div class="col-md-4"></div>
+
+</div>
+</div>
+{% include 'footer.html' %}
+{% endblock content %}

@@ -1,7 +1,16 @@
 # Swap Ecommerce Flask
 
-Ecommerce web application using python and flask framework.In this project SQLAlchemy used for database, Stripe used for payment gateway, and flask-mail used for mail.
+# Ecommerce Web Application using Python and Flask (For Learning Purpose)
 
+This project is a sample Ecommerce web application developed for learning purposes, using the Python programming language and Flask web framework.
+
+## Features
+
+- **Database:** SQLAlchemy is used for managing the database. The database schema and models can be found in the `models` directory.
+
+- **Payment Gateway:** Stripe is integrated into the application for handling online payments. Ensure you have the necessary API keys and configurations in the `config.py` file.
+
+- **Email:** Flask-Mail is used for sending emails. Configure your email settings in the `config.py` file to enable features like order confirmation emails.
 
 ### Features
 
@@ -71,7 +80,7 @@ YouTube : https://youtu.be/wgJmhHc3aTc
     * <strong>Python</strong> (version 3.0 or above)
 
 2. Installation
-```
+```  
     pip install -r requirements.txt
 ```
 
@@ -104,8 +113,7 @@ YouTube : https://youtu.be/wgJmhHc3aTc
 <table align="center">
     <tr>
         <td align="center">
-<!-- 	<p><strong>Contact</strong> for source code at : shahiburrahman55@gmail.com</p> -->
-		<p>Project source code has been removed, for source code contact me via email.</p>
+		<!-- <p>Project source code has been removed, for source code contact me via email.</p> -->
         </td>
     </tr>
 </table>

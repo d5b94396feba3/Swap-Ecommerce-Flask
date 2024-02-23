@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %} Payment Successful {% endblock %}
+
+{% block content %}
+
+{% include 'navbar.html' %}
+
+<div class="text-center mt-5 mb-5" style="color: white; opacity: 0.9; margin-bottom: 300px;">
+  <h1 class="display-3">Thank You!</h1>
+  <p class="lead">For shopping with us!</p>
+  <hr>
+  <p class="lead">
+    <a class="btn btn-primary btn-sm" href="{{url_for('index')}}" role="button">Continue to Ovuzal</a>
+  </p>
+</div>
+
+{% include 'footer.html' %}
+
+{% endblock %}

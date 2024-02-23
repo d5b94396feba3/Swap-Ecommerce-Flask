@@ -1,0 +1,101 @@
+{% extends 'layout.html' %}
+
+{% block title %}Search {% endblock %}
+
+{% block content %}
+
+{% include 'navbar.html' %}
+
+<div class="container">
+
+	{% include '_messages.html' %}
+
+
+	<div class="row mt-4 mb-3">
+		<h4 style="color: white; margin-left: 280px; opacity: 0.5">Your search for "{{keyword}}" revealed the following:</h4>
+	 </div>
+
+	<form action="{{url_for('search')}}" method="POST" class="form-inline" style="margin-left: 380px;">
+	        <div class="row">
+	        <div class="col-12">
+	            <div class="input-group">
+	                <input id ="input_id" name="search" style="font-size: 20px; border:0; background-color:black; color: white; opacity: 0.5;" class="form-control text-white bg-dark rounded-right" type="search" value="{{keyword}}" placeholder="Search all products..." >
+	                <div class="input-group-append">
+	                    <button class="btn btn-black" type="submit" style="font-size: 20px;">
+	                        <i style="color: white; font-size: 24px; opacity: 0.9;" class="fa fa-search" aria-hidden="true"></i>
+
+	                    </button>
+	                </div>
+
+	            </div>
+	        </div>
+
+	    </div>
+
+	  </form>
+
+
+	<hr>
+
+     <div class="row">
+
+		{% if keywords %}
+
+		{% for product in keywords %}
+
+		<div class="col-md-3 mt-3">
+
+			<div class="card border border-dark mt-3" style="background-color: black;">
+				<img src="{{url_for('static',filename='images/'+product.image_1)}}" alt="{{product.name}}" class="card-img-top" style="background-color: black;" height="200">
+
+				<div class="card-body " style="background-color: black; height: 7rem;">
+					{% if product.discount > 0 %}
+					{% set new_dis = "%0.2f" | format((product.price |float)-(product.discount/100)*product.price|float) %}
+					<h5 class="text-center" style="color: white; font-size: 19px;">{{product.name}}</h5>
+					<h5 class="text-center" style="color: green; font-size: 17px;"> ${{new_dis}}</h5> 
+					<p class="text-center" style="color: white;">Price: <strike>${{product.price}}</strike> ({{product.discount}}% OFF)</p>
+					{% else %}
+					<h5 class="text-center" style="color: white;">{{product.name}}</h5>
+					<p class="text-center" style="color: white;">Price ${{product.price}}</p>
+					{% endif %}
+				</div>
+				<div class="card-footer" style="background-color: black;">
+					<a href="{{url_for('product_detail',id=product.id)}}" class="float-left btn btn-sm btn-dark">Details</a>
+				<form action="{{url_for('AddCart')}}" method="POST">
+				<input type="hidden" name="product_id" value="{{product.id}}">
+				<button type="submit" class="btn btn-sm btn-dark float-right">Add Cart</button>
+				
+				<input type="hidden" name="quantity" id="" value="1">
+
+				{% set sizes=product.sizes.split(',') %}
+				
+				<select name="sizes" id="sizes" style="visibility: hidden;">
+					{% for size in sizes %}
+					{% set col=size.split(':') %}
+					<option value="{{col[0]}}">{{col[0]|capitalize}}</option>
+					{% endfor %}
+				</select>
+			</form>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+		{% else %}
+		<div class="row">
+		<div class="col mt-3 ml-3">
+
+						<div class="col mt-3">
+						 <h4 style="color: white; opacity: 0.5; margin-left: 337px;">Sorry! No products found!!</h4>
+						</div>
+					</div>
+			</div>
+
+		{% endif %}
+</div></div>
+<hr>
+
+
+{% include 'footer.html' %}
+
+
+{% endblock content%}

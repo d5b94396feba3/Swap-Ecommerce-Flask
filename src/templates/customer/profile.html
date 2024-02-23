@@ -1,0 +1,93 @@
+{% extends 'layout.html' %}
+
+{% block title %}Profile {% endblock %}
+
+{% block content %}
+
+{% include 'navbar.html' %}
+
+<div class="container ">
+
+
+	<div class="mt-3" style="margin-left: 340px; width: 440px;">
+		{% include '_messages.html' %}
+	</div>
+
+    <div class="cart user-profile container">
+    <p style="color: white;" class="title">Welcome! {{ user.name }}</p>
+    
+   </div>
+
+    {% if not user.is_confirm %}
+     
+     {% if not session['email'] %}
+	<div class="alert alert-danger mt-3 " role="alert" style="margin-left: 340px; width: 440px;">
+	 You have not confirmed your account. Please verify your account.
+	</div>
+	<a href="{{url_for('confirm_account')}}" class="btn btn-sm btn-dark" style="margin-left: 340px; margin-top: 0px;">Verify</a>
+	{% else %}
+	<div class="alert alert-info mt-3 " role="alert" style="margin-left: 340px; width: 440px;">
+		A confirmation email has been sent via email. Please check your inbox (and your spam folder).</div>
+	<a href="{{url_for('confirm_account')}}" class="btn btn-sm btn-dark" style="margin-left: 340px; margin-top: 0px;">Resend</a>
+	{% endif %}
+
+
+
+   {% elif customer_orders %}
+
+	<h4 class="mt-3" style="margin-left: 450px; color: white; opacity: 0.5">Your Bucket List </h4><br>
+
+    {% for product in customer_orders %}
+    	
+		<div class="col-md-7 mt-3" style="margin-left: 220px;">
+			<div class="card border border-dark" style="background-color: black;">
+				<img src="{{url_for('static',filename='images/'+product.product_image)}}" alt="{{product.name}}" class="card-img-top mt-2" style="background-color: black;" height="270">
+
+				<div class="card-body " style="background-color: black; color:white; height: 10rem; ">
+
+				<p class="mb-1">Invoice ID: {{ product.invoice }}</p>
+                <p class="mb-1">{{ product.product_name }}</p>
+                <p class="mb-1">Quantity : {{ product.product_quantity }}</p>
+                <p class="mb-1">Status : {{ product.status }}</p>
+                <p class="mb-1">Order On : {{product.order_date}}</p>
+
+				</div>
+				<div class="card-footer" style="background-color: black;">
+					<!-- <input type="hidden" name="recommand_product" value="{{product.name}}"> -->
+
+
+		            {%if product.product_cancel %}
+
+					<!-- <a href="#" class="float-left btn btn-sm btn-dark">Cancelled</a> -->
+					<button disabled class="float-left btn btn-sm btn-dark">Cancelled</button>
+
+		            {%elif product.product_delivered == 'False'%}
+
+<!-- 					<a href="{{url_for('order_cancel',id=product.id)}}" class="float-right btn btn-sm btn-dark">Order Pending</a> -->
+					<button disabled class="float-right btn btn-sm btn-dark">Order Pending</button>
+
+		            {%elif product.product_delivered == 'True' %}
+
+					<!-- <a href="#" class="float-left btn btn-sm btn-dark">Delivered</a> -->
+					<button disabled class="float-right btn btn-sm btn-dark">Delivered</button>
+
+		            {% endif %}
+
+
+				</div>
+			</div>
+		</div>
+
+    {% endfor %}
+    {% else %}
+    <h4 class="mt-3" style="margin-left: 350px; color: white; opacity: 0.5;">You don't order any product yet!</h4>
+    {% endif %}
+
+
+</div>
+
+<hr style="margin-top: 300px;"><hr>
+
+{% include 'footer.html' %}
+
+{% endblock content%}
