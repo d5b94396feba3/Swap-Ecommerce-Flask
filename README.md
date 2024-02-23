@@ -2,7 +2,7 @@
 
 This project represents a sample Ecommerce web application developed with the Python programming language and Flask web framework.
 
-## Features
+## Features (1)
 
 - **Database:** SQLAlchemy is used for managing the database. 
 
